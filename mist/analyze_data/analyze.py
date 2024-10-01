@@ -509,6 +509,9 @@ class Analyzer:
 
         # Run basic checks on the dataset.
         self.validate_dataset()
+        
+        # Reset dataframe indices to account for dropped data
+        self.paths_dataframe = self.paths_dataframe.reset_index(drop=True)
 
         # Add folds to paths dataframe.
         self.paths_dataframe = utils.add_folds_to_df(
